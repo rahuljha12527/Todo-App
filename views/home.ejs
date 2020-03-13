@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <title>
+          <%=title%>
+      </title>
+      <link href="https://fonts.googleapis.com/css?family=Hind&display=swap" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="/css/home.css">
+    
+      <!-- <style>
+          /* *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+    background-color: #111;
+
+}
+
+h1{
+    font-size: 3rem;
+    font-weight: 50;
+    margin: 1rem 0 3rem;
+    text-align: center;
+    color: #fff;
+    font-family: 'Hind', sans-serif;
+}
+
+.styling{
+    font-weight: 800;
+    color: lime;
+
+}
+.input_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.input_div .input{
+    padding: 0.5rem 1 rem;
+    height: 50px;
+    outline: none;
+    border: none;
+    background-color: #fff;
+    width: 450px;
+    font-size: 1.15 rem;
+    margin: 0.25rem;
+    border-radius: 25px;
+
+}
+
+.addButton{
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    background-color: lime;
+    color: #fff;
+    margin: 0.25rem;
+    cursor: pointer;
+
+}
+
+.addButton:hover{
+    opacity: 0.7;
+
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 2rem;
+
+}
+
+.item{
+    padding:0.5 rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 4px solid #fff;
+
+}
+
+.item_input{
+    background: none;
+    outline: none;
+    color: #fff;
+    border:none;
+    width:350px;
+    font-size: 1.4rem;
+
+}
+
+.editButton{
+    font-size: 1.4rem;
+    margin:  0 0.5rem;
+    font-family: 'Hind', sans-serif;
+    background: none;
+    outline: none;
+    color: lime;
+    border: none;
+
+}
+
+.removeButton{
+    font-size: 1.4rem;
+    margin:  0 0.5rem;
+    font-family: 'Hind', sans-serif;
+    background: none;
+    outline: none;
+    color: #E00;
+    border: none;
+    
+} */
+      </style> -->
+    </head>
+
+    <body>
+        <h1><span class="styling">TODO</span>List</h1>
+         <!-- <div class="input_div">
+           <input class="input" type="text" placeholder="What Do you Want to Do ...">
+           <button class="addButton"><i class="fas fa-plus"></i></button>
+        </div> -->
+        <div class="input_div">
+        <form action="/create-todo" method="POST">
+            <input class="input" type="text" name="name" placeholder="What do you want to do" required>
+            <button class="addButton"><i class="fas fa-plus"></i>Add</button>
+          
+         </form>
+        </div>
+       
+        <% for(let i of todo_list) { %>
+            <div class="container">
+                <div class="item" style="color: white;">
+                    <%= i.name %>
+                    <button class="editButton"> EDIT </button>
+                    <button class="removeButton"><a href="/delete-todo/?id=<%=i.id %>">Remove</a> </button>
+                </div>
+            </div>
+        <% } %>
+        <!-- <form action="/create-todo" method="POST">
+           <input type="text" name="name" placeholder="What do you want to do" required>
+           <button class="addButton"><i class="fas fa-plus"></i>Add</button>
+         
+        </form>
+         -->
+         <script type= "text/javascript" src="/js/home.js"></script>
+    </body>
+</html>
