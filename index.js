@@ -6,7 +6,9 @@ const db=require('./config/mongoose');
 
 const Todo=require('./models/todo');
 
+
 const app=express();
+//const moment=require('moment');
 
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
@@ -14,6 +16,7 @@ app.set('views',path.join(__dirname,'views'));
 app.use(express.urlencoded());
 app.use(express.static('assets'));
 
+//moment.calendarFormat();
 // app.use(function(req,res,next){
 //    console.log('middleware 1 called');
 //    next();
@@ -40,10 +43,11 @@ app.get('/',function(req,res){
             console.log('error in fetching details');
             return;
         }
-
+       
         return res.render('home',{
             title: "My Todo App",
-            todo_list:todos });
+            todo_list:todos,
+             });
     });
 
    
@@ -57,7 +61,9 @@ app.post('/create-todo',function(req,res){
 
     // TodoList.push(req.body);
     Todo.create({
-        name:req.body.name
+        name:req.body.name,
+        date:req.body.date,
+        category:req.body.category
     },function(err,newTodo){
         if(err){
             console.log('err in creating the contact');
@@ -65,6 +71,7 @@ app.post('/create-todo',function(req,res){
         }
 
         console.log('*******',newTodo);
+        console.log(newTodo);
         return res.redirect('back');
     });
 

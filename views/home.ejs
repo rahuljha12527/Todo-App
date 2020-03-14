@@ -130,19 +130,33 @@ h1{
          <!-- <div class="input_div">
            <input class="input" type="text" placeholder="What Do you Want to Do ...">
            <button class="addButton"><i class="fas fa-plus"></i></button>
-        </div> -->
-        <div class="input_div">
+        </div> -->  
+        <div    class="input_div">
         <form action="/create-todo" method="POST">
             <input class="input" type="text" name="name" placeholder="What do you want to do" required>
+            <input type="date" name="date" placeholder="Enter the deadline..." required>
+            
+            <select id="catergory" placeholder="category" name="category">
+                <option value="School">School</option>
+                 <option value="Work">Work</option>
+                 <option value="College">College</option>
+                 <option value="Profession">Profession</option>
+            </select>
             <button class="addButton"><i class="fas fa-plus"></i>Add</button>
+    
           
+            
+
          </form>
         </div>
        
         <% for(let i of todo_list) { %>
             <div class="container">
                 <div class="item" style="color: white;">
+                    <input type="checkbox" name="checkbox">
                     <%= i.name %>
+                    <%= i.date %>
+                    <%=i.category%>
                     <button class="editButton"> EDIT </button>
                     <button class="removeButton"><a href="/delete-todo/?id=<%=i.id %>">Remove</a> </button>
                 </div>
